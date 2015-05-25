@@ -6,3 +6,4 @@ My group's blog. Thank you for enjoy.
 3 npm install (to install all the dependecy)
 4 npm start (to develop the project )
 5 visit localhost:3000 
+
