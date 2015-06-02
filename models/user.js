@@ -28,6 +28,7 @@ User.getUser = function(email, callback) {
 				if (err) {
 					return callback(err);
 				}
+				console.log(user);
 				callback(null, user);
 			})
 		})

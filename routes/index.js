@@ -7,7 +7,9 @@ var User = require('../models/user');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 var settings = require('../settings');
+// 用户id
 var userId = 0;
+var pwd = 0;
 // Test Code
 // var defaultUrl = 'https://m.tianyi9.com/fo.php?live_id=KKXKPYZFOUCCQHOY&file_id=a1641fdf23a085a9&logincookie=';
 
@@ -19,7 +21,9 @@ router.get('/', function(req, res) {
 });
 
 router.get('/songjson', function(req, res) {
-	res.render('songjson');
+	res.render('songjson', {
+		title: 'Song json transfer'
+	});
 });
 
 router.get('/download', function(req, res) {
@@ -28,7 +32,9 @@ router.get('/download', function(req, res) {
 });
 
 router.get('/inputDrag', function(req, res) {
-	res.render('inputDrag');
+	res.render('inputDrag', {
+		title: 'input drag'
+	});
 });
 
 router.post('/songjson', function(req, res) {
@@ -76,6 +82,20 @@ router.get('/loginpwd', function(req, res) {
 	})
 });
 
+router.post('/loginpwd', function(req, res){
+	var inputpwd = req.body.password;
+	var passwd = pwd;
+	console.log('inputpwd : ' + inputpwd);
+	console.log('password :' + passwd);
+	if (inputpwd === passwd) {
+		console.log('Login successful');
+		res.redirect('/');
+	} else {
+		console.log('password error');
+		res.redirect('/loginpwd');
+	}
+});
+
 // 判断用户是否在数据库中，如果是则发送获取密码
 router.post('/login', function(req, res) {
 	console.log(req.body.email);
@@ -83,32 +103,44 @@ router.post('/login', function(req, res) {
 	// Generate random password
 	var password = Math.round(Math.random() * 8999) + 1000;
 	console.log('password is :' + password);
+	pwd = password;
+	console.log('global pwd :' + password);
 	// mail configure
 	var smtpConfig = settings.smtpConfig;
+	console.log(smtpConfig);
 
 	User.getUser(email, function(err, user) {
 		if (err) {
 			console.log('can not get the user');
 			res.redirect('/login');
 		} else {
-			function sendMail() {
-				var transport = nodemailer.createTransport(smtpTransport(smtpConfig));
-				transport.sendMail({
-					from: ,
-					to: email,
-					subject: "Check your password",
-					text: "your password is : " + password
-				}, function(err, info){
-					console.log("Send mail success");
-				});
+			// 如果用户存在
+			if (user !== null) {
+				function sendMail() {
+					var transport = nodemailer.createTransport(smtpTransport(smtpConfig));
+					transport.sendMail({
+						from: "",
+						to: email,
+						subject: "Check your password",
+						text: "your password is : " + password
+					}, function(err, info) {
+						if (err) {
+							console.log(err);
+						} else {
+							console.log("Send mail success");
+						}
+					});
+				}
+				sendMail();
+				res.redirect('/loginpwd');
+			} else {
+				res.redirect('/login');
 			}
-			sendMail();
-			res.redirect('/loginpwd');
 		}
 	})
 });
 
-router.get('/reg', function(req, res){
+router.get('/reg', function(req, res) {
 	res.render('reg', {
 		title: "Registor test"
 	})
@@ -154,4 +186,5 @@ router.post('/reg', function(req, res) {
 		});
 	});
 });
+
 module.exports = router;

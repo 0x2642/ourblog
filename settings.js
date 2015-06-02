@@ -4,11 +4,11 @@ module.exports = {
 	host: 'localhost',
 	port: 27017,
 	smtpConfig: {
-		host: ,
-		port: ,
+		host: '',
+		port: 25,
 		auth: {
-			user: ,
-			password: 
+			user: "",
+			pass: ""
 		}
 	}
 }
