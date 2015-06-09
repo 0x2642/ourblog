@@ -10,6 +10,7 @@ var settings = require('../settings');
 // 用户id
 var userId = 0;
 var pwd = 0;
+var glEmail = null;
 // Test Code
 // var defaultUrl = 'https://m.tianyi9.com/fo.php?live_id=KKXKPYZFOUCCQHOY&file_id=a1641fdf23a085a9&logincookie=';
 
@@ -70,30 +71,38 @@ router.post('/songjson', function(req, res) {
 	});
 });
 
-router.get('/login', function(req, res) {
-	res.render('login', {
-		title: 'Login'
-	})
-});
-
 router.get('/loginpwd', function(req, res) {
 	res.render('loginpwd', {
-		title: 'Login pwd'
+		title: 'Login pwd',
 	})
 });
 
 router.post('/loginpwd', function(req, res){
-	var inputpwd = req.body.password;
+	var inputpwd = parseInt(req.body.password);
 	var passwd = pwd;
-	console.log('inputpwd : ' + inputpwd);
-	console.log('password :' + passwd);
+	var email = glEmail;
+
+	console.log('email: ' + email);
+
 	if (inputpwd === passwd) {
 		console.log('Login successful');
+		User.getUser(email, function(err, user){
+			if (err) {
+				return err;
+			}
+			// req.session.user = user;
+		})
 		res.redirect('/');
 	} else {
 		console.log('password error');
 		res.redirect('/loginpwd');
 	}
+});
+
+router.get('/login', function(req, res) {
+	res.render('login', {
+		title: 'Login',
+	})
 });
 
 // 判断用户是否在数据库中，如果是则发送获取密码
@@ -108,6 +117,7 @@ router.post('/login', function(req, res) {
 	// mail configure
 	var smtpConfig = settings.smtpConfig;
 	console.log(smtpConfig);
+	var me = this;
 
 	User.getUser(email, function(err, user) {
 		if (err) {
@@ -132,6 +142,7 @@ router.post('/login', function(req, res) {
 					});
 				}
 				sendMail();
+				glEmail = email;
 				res.redirect('/loginpwd');
 			} else {
 				res.redirect('/login');
@@ -178,7 +189,7 @@ router.post('/reg', function(req, res) {
 				console.log('aaaaa' + err);
 				return res.redirect('/reg'); //注册失败返回主册页
 			}
-			req.session.user = user; //用户信息存入 session
+			//req.session.user = user; //用户信息存入 session
 			console.log('registor success');
 			//感谢楼上的精彩装b 下一位
 			userId++;
