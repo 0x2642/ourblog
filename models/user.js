@@ -7,7 +7,7 @@ var userSchema = new mongoose.Schema({
 	email: String,
 	nickName: String,
 	about: String,
-	signiture: String,
+	signature: String,
 	lastLoginTime: Date
 }, {
 	collection: 'users'
@@ -20,7 +20,7 @@ function User(user) {
 	this.email = user.email;
 	this.nickName = user.nickName;
 	this.about = user.about;
-	this.signiture = user.signiture;
+	this.signature = user.signature;
 	this.lastLoginTime = user.lastLoginTime;
 }
 
@@ -44,7 +44,7 @@ User.prototype.save = function(callback) {
 		email: this.email,
 		nickName: this.nickName,
 		about: this.about,
-		signiture: this.signiture,
+		signature: this.signature,
 		lastLoginTime: this.lastLoginTime,
 	};
 
