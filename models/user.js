@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 var settings = require('../settings');
-mongoose.connect('mongodb://ourblog:111111@ds029317.mongolab.com:29317/ourblog')
+// Connect mongodb by url method
+mongoose.connect(settings.mongodbUrl);
 
+// Define user schema
 var userSchema = new mongoose.Schema({
 	id: Number,
 	email: String,
@@ -13,8 +15,10 @@ var userSchema = new mongoose.Schema({
 	collection: 'users'
 });
 
+// Create Schema Model
 var userModel = mongoose.model('User', userSchema);
 
+// Create User class
 function User(user) {
 	this.id = user.id;
 	this.email = user.email;
@@ -26,6 +30,7 @@ function User(user) {
 
 module.exports = User;
 
+// Get user from db by email
 User.getUser = function(email, callback) {
 	userModel.findOne({
 		email: email
@@ -37,8 +42,9 @@ User.getUser = function(email, callback) {
 	})
 }
 
+// Save user information
 User.prototype.save = function(callback) {
-	//要存入数据库的用户信息
+	// user information
 	var user = {
 		id: this.id,
 		email: this.email,
