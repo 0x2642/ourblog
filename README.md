@@ -30,4 +30,3 @@ My group's blog. Thank you for enjoy.
 
 3. Additional node_modules to install with global: 
    npm install -g supervisor  
-
