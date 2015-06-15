@@ -1,11 +1,33 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include header %>
+<!-- Header -->
+<header>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<img class="img-responsive" src="images/common/YSP.png" alt="">
+				<div class="intro-text">
+					<span class="name">加班工具网</span>
+					<span class="skills">More Tools, More Work</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!-- About Section -->
+<section class="success" id="about">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2>About</h2>
+				<hr class="star-light">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-7 col-lg-offset-2">
+				<p>This website is my third webside created by nodejs and bootstrap. It's just for my needs to solve some probles only by visiting the website. Now the site is on constructing. Thank you for advise.</p>
+				<p><a href="/inputDrag">inputDrag</a>
+			</div>
+		</div>
+	</div>
+</section>
+<%- include footer %>

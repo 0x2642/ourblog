@@ -1,0 +1,340 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+p {
+    font-size: 20px;
+}
+
+p.small {
+    font-size: 16px;
+}
+
+a,
+a:hover,
+a:focus,
+a:active,
+a.active {
+    outline: 0;
+    color: #18bc9c;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.canvas-place {
+	background-color: red;
+	padding: 40px 15px;
+}
+
+/* footer part */
+#footer {
+	background: #151515;
+	color: #666;
+	display: -webkit-box;
+	position: relative;
+	margin-top: -100px;
+}
+#footer a {
+	color: #666;
+	font-size: 12px;
+}
+#footer h1 {
+	font-size: 16px;
+	color: #ccc;
+	margin-bottom: 20px;
+}
+
+#footer .button {
+	box-shadow: none;
+	width: auto;
+	nowhitespace: afterproperty;
+	background: #444;
+	color: #999;
+	cursor: pointer;
+	display: inline-block;
+	font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 1;
+	margin: 0;
+	outline: none;
+	padding: 10px 10px 11px;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	-webkit-transition: background-color 0.15s ease-in-out;
+	-moz-transition: background-color 0.15s ease-in-out;
+	-o-transition: background-color 0.15s ease-in-out;
+	transition: background-color 0.15s ease-in-out;
+}
+#footer input[type="text"] {
+	background: #333;
+	font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	border: 1px solid #333;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-ms-border-radius: 2px;
+	-o-border-radius: 2px;
+	border-radius: 2px;
+	color: #999;
+	display: block;
+	font-size: 12px;
+	margin: 0 0 12px 0;
+	padding: 6px;
+	height: 32px;
+	width: 100%;
+	-webkit-transition: all 0.15s linear;
+	-moz-transition: all 0.15s linear;
+	-o-transition: all 0.15s linear;
+	transition: all 0.15s linear;
+	box-shadow: none;
+}
+
+.blog--footer__back {
+	background-image: url('../images/common/blog-05.png');
+	background-repeat: no-repeat;
+	margin-left: 2px;
+	width: 110px;
+	height: 100px;
+}
+.blog--footer__mode-select-panel {
+	margin-left: 5%;
+	display: -webkit-box;
+	-webkit-box-align: end;
+}
+.blog--footer__mode-select--item1 {
+	background-image: url('../images/common/blog-01.png');
+	height: 76px;
+	width: 86px;
+}
+.blog--footer__mode-select--item2 {
+	background-image: url('../images/common/blog-02.png');
+	height: 76px;
+	width: 86px;
+	margin-left: 3px;
+}
+.blog--footer__mode-select--item3 {
+	background-image: url('../images/common/blog-03.png');
+	height: 76px;
+	width: 86px;
+	margin-left: 3px;
+}
+.blog--footer__mode-select--item4 {
+	background-image: url('../images/common/blog-04.png');
+	height: 76px;
+	width: 86px;
+	margin-left: 3px;
+}
+.blog--footer__user-info--panel {
+	margin-left: 20%;
+	width: 300px;
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-align: end;
+}
+.blog--footer__user-info--innerpanel {
+	margin-left: 10px;
+}
+.blog--footer__user-info--img {
+	background-image: url('../images/common/user-img.jpg');
+	width: 80px;
+	height: 80px;
+	background-repeat: no-repeat;
+}
+.blog--footer__user-info--name {
+	width: 180px;
+	line-height: 20px;
+}
+.blog--footer__user-info--performence {
+	width: 180px;
+	line-height: 18px;
+}
+.blog--footer__user-info--accurcy {
+	width: 180px;
+	line-height: 20px;
+}
+.blog--footer__user-info--level {
+	width: 180px;
+}
+.blog--footer__user-info--rank {
+	height: 40px;
+	font-size: 35px;
+}
+
+/* header place */
+header {
+    text-align: center;
+    color: #fff;
+    background: #A64AE5;
+}
+
+header .container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+header img {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+header .intro-text .name {
+    display: block;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+header .intro-text .skills {
+    font-size: 1.25em;
+    font-weight: 300;
+}
+
+@media(min-width:768px) {
+    header .container {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    header .intro-text .name {
+        font-size: 4.75em;
+    }
+
+    header .intro-text .skills {
+        font-size: 1.75em;
+    }
+}
+
+section {
+    padding: 100px 0;
+}
+
+section h2 {
+    margin: 0;
+    font-size: 3em;
+}
+
+section.success {
+    color: #A64AE5;
+    background: #fff;
+}
+
+@media(max-width:767px) {
+    section {
+        padding: 75px 0;
+    }
+
+    section.first {
+        padding-top: 75px;
+    }
+}
+
+.btn-outline {
+    margin-top: 15px;
+    border: solid 2px #fff;
+    font-size: 20px;
+    color: #fff;
+    background: 0 0;
+    transition: all .3s ease-in-out;
+}
+
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active,
+.btn-outline.active {
+    border: solid 2px #fff;
+    color: #18bc9c;
+    background: #fff;
+}
+
+.floating-label-form-group {
+    position: relative;
+    margin-bottom: 0;
+    padding-bottom: .5em;
+    border-bottom: 1px solid #eee;
+}
+
+.floating-label-form-group input,
+.floating-label-form-group textarea {
+    z-index: 1;
+    position: relative;
+    padding-right: 0;
+    padding-left: 0;
+    border: 0;
+    border-radius: 0;
+    font-size: 1.5em;
+    background: 0 0;
+    box-shadow: none!important;
+    resize: none;
+}
+
+.floating-label-form-group label {
+    display: block;
+    z-index: 0;
+    position: relative;
+    top: 2em;
+    margin: 0;
+    font-size: .85em;
+    line-height: 1.764705882em;
+    vertical-align: middle;
+    vertical-align: baseline;
+    opacity: 0;
+    -webkit-transition: top .3s ease,opacity .3s ease;
+    -moz-transition: top .3s ease,opacity .3s ease;
+    -ms-transition: top .3s ease,opacity .3s ease;
+    transition: top .3s ease,opacity .3s ease;
+}
+
+.floating-label-form-group::not(:first-child) {
+    padding-left: 14px;
+    border-left: 1px solid #eee;
+}
+
+.floating-label-form-group-with-value label {
+    top: 0;
+    opacity: 1;
+}
+
+.floating-label-form-group-with-focus label {
+    color: #18bc9c;
+}
+
+form .row:first-child .floating-label-form-group {
+    border-top: 1px solid #eee;
+}
+
+.table-games { margin-top: 50px; }
+
+.sb-get { margin-top: 50px; }
+
+.movable {
+    position: absolute;
+    width: 120px;
+    height: 30px;
+    left: 20px;
+    top: 140px;
+}
+
+.input-class {
+    width: 100%;
+    height: 100%;
+}
+
+.login {
+	margin-top: 100px;
+	margin-left: 50px
+}
