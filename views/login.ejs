@@ -1,8 +1,15 @@
 <%- include header %>
+
+
+
+
 <div class="login">
-	<form method="post">
+	<form method="post" onsubmit="waitingDialog.show('Sending e-mail...', {dialogSize: 'sm', progressType: 'warning'});">
 		请输入邮箱地址：<input type="text" name="email"/><br />
 		<input type="submit" value="获取密码" />
 	</form>
 </div>
+
+
+
 <%- include footer %>

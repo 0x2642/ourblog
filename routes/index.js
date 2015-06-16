@@ -129,21 +129,23 @@ router.post('/login', function(req, res) {
 				function sendMail() {
 					var transport = nodemailer.createTransport(smtpTransport(smtpConfig));
 					transport.sendMail({
-						from: "",
+						from: "ourblog_test@163.com",
 						to: email,
 						subject: "Check your password",
 						text: "your password is : " + password
 					}, function(err, info) {
 						if (err) {
 							console.log(err);
+							// 如果发送失败，返回发送页面
+							res.redirect('/login');
 						} else {
 							console.log("Send mail success");
+							glEmail = email;
+							res.redirect('/loginpwd');
 						}
 					});
 				}
 				sendMail();
-				glEmail = email;
-				res.redirect('/loginpwd');
 			} else {
 				res.redirect('/login');
 			}

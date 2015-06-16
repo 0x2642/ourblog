@@ -30,3 +30,7 @@ My group's blog. Thank you for enjoy.
 
 3. Additional node_modules to install with global: 
    npm install -g supervisor  
+
+### mail ###
+1. ourblog_test@163.com ourblog123
+2. iwnhqunluvahwzsf
