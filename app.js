@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var settings = require('./settings');
 var session = require('express-session');
+var route = require('./routes/index');
+var config = require('./config')
 
 var routes = require('./routes/index');
 
@@ -23,10 +25,11 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
+app.use(session(config.session));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '..')));
 
-app.use('/', routes);
+route(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -58,13 +61,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
-app.use(session({
-    secret: settings.cookieSecret,
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 30
-    }, //30 days
-}));
-
 
 module.exports = app;
