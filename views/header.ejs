@@ -46,7 +46,14 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="/login">Login</a></li>
+            <li><a href="/logout">Logout</a></li>
             <li><a href="/reg">Registor</a></li>
+            <li><a href="/post">Post</a></li>
+            <% if (user) { %>
+              <li><a href="#">bbbb</a></li>
+            <% } else { %>
+              <li><a href="#">匿名</a></li>
+            <% } %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tools <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
