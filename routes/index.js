@@ -99,12 +99,15 @@ module.exports = function(app) {
             console.log('Login successful');
             User.getUser(email, function(err, user) {
                 if (err) {
+                    // 返回一个没有登录的index
+                    res.redirect('/');
                     return err;
                 }
                 console.log('user nickname is: ', user.nickName);
                 req.session.user = user;
+                // 返回一个登录了的index
+                res.redirect('/');
             })
-            res.redirect('/');
         } else {
             console.log('password error');
             res.redirect('/loginpwd');
