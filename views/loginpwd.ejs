@@ -1,8 +1,9 @@
 <%- include header %>
 <div class="login">
 	<form method="post">
-		请输入验证密码：<input type="password" name="password"/><br />
-		<input type="submit" value="登入" />
+		<label for="exampleInputEmail3">请输入验证密码：</label>
+		<input type="password" class="form-control" id="password" placeholder="Password" name="password"><br/>
+		<input class="btn btn-default" type="submit" value="登入"/>
 	</form>
 </div>
 <%- include footer %>
