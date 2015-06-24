@@ -1,0 +1,10 @@
+{
+	"session": {
+		"resave": true,
+		"saveUninitialized": true,
+		"secret": "ourblog",
+		"cookie": {
+			"maxAge" : 2592000000
+		}
+	}
+}

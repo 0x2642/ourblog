@@ -1,7 +1,16 @@
 My group's blog. Thank you for enjoy.
 
+### Environment ###
+1. Nodejs 0.12.4
+
+2. python 2.7.6 
+
+3. JQuery 1.11.2
+
+4. Bootstrap 3.3.4
+
 ### Installation ###
-1. nodejs environment downloaded from website: https://nodejs.org/download/
+1. This project needs nodejs environment. Please download from the website: https://nodejs.org/download/
 
 2. git clone the project
 
@@ -11,19 +20,17 @@ My group's blog. Thank you for enjoy.
 
 5. visit localhost:3000 
 
+### PS ###
+1. If you type npm command and recieve a timeout callback , please you the following resolution: 
+	npm install -g cnpm --registry=https://registry.npm.taobao.org
+    cnpm install
 
-### Deployment ###
-1. Install mongodb in your computer.
+2. If you have warnings while installing packages, like to install node-pre-gyp, please use the following resolution
+	npm(cnpm) install node-pre-gyp
 
-2. Create file in mongodb root folder, and name it as ourblog.
+3. Additional node_modules to install with global: 
+   npm install -g supervisor  
 
-2. Enter mongodb root folder, then enter: 
-
-	2.1 cd bin
-
-	2.2 mongod --dbpath ../ourblog (To connect with mongodb)
-
-3. Enter your email information in settings to configure your own style
-
-4. npm install && npm start 
-
+### mail ###
+1. ourblog_test@163.com ourblog123
+2. iwnhqunluvahwzsf
