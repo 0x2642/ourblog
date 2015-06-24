@@ -1,31 +1,31 @@
-        <div class="col-xs-12 col-md-4">
-          <section class="about">
-            <p><strong>0x2642 Blog</strong> is a blog about 教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班</p>
-            <a href="/about">More</a>
-          </section>
-          <section class="social">
-            <ul>
-              <li><a href="#Mail">Mail</a></li>
-              <li><a href="#Github">Github</a></li>
-              <li><a href="#Weibo">Weibo</a></li>
-              <li><a href="#RSS">RSS</a></li>
-            </ul>
-          </section>
-          <% if (user) { %>
-          <section class="ctrl">
-            <img src="#" class="avatar">
-            <p>Welcome back,<em><%=user%></em></p>
-            <ul>
-              <li><a href="/post">New Post</a></li>
-              <li><a href="/signature">Edit Signature</a></li>
-              <li><a href="/logout">Logout</a></li>
-            </ul>
-          </section>
-          <% }else{ %>
-          <section class="ctrl">
-            <ul>
-              <li><a href="/login">Login</a></li>
-            </ul>
-          </section>
-          <% } %>
-        </div>
+<div class="col-xs-12 col-md-4">
+  <section class="about">
+    <p><strong>0x2642 Blog</strong> is a blog about 教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班</p>
+    <a href="/about">More</a>
+  </section>
+  <section class="social">
+    <ul>
+      <li><a href="#Mail">Mail</a></li>
+      <li><a href="#Github">Github</a></li>
+      <li><a href="#Weibo">Weibo</a></li>
+      <li><a href="#RSS">RSS</a></li>
+    </ul>
+  </section>
+  <% if (user) { %>
+  <section class="ctrl">
+    <img src="#" class="avatar">
+    <p>Welcome back,<em><%= user.nickName %></em></p>
+    <ul>
+      <li><a href="/post">New Post</a></li>
+      <li><a href="/signature">Edit Signature</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+  </section>
+  <% }else{ %>
+  <section class="ctrl">
+    <ul>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </section>
+  <% } %>
+</div>

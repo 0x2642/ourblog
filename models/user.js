@@ -1,7 +1,4 @@
 var mongoose = require('mongoose');
-var settings = require('../settings');
-// Connect mongodb by url method
-mongoose.connect(settings.mongodbUrl);
 
 // Define user schema
 var userSchema = new mongoose.Schema({
