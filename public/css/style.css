@@ -16,7 +16,8 @@ body {
   background-color: #EEE;
 }
 
-button span {
+button span,
+a[role=button] span {
   margin-right: 4px;
 }
 
@@ -165,4 +166,25 @@ article li {
 .ctrl p {
   margin-top: 12px;
   margin-bottom: 16px;
+}
+
+.social-icon{
+  width: 60px;
+  height: 60px;
+  font-size: 0px;
+  display: block;
+  background-image: url("../images/social-icon.png");
+}
+
+.social-weixin{
+  background-position: 0 0;
+}
+.social-weibo{
+  background-position: -60px 0;
+}
+.social-qq{
+  background-position: -120px 0;
+}
+.social-rss{
+  background-position: -180px 0;
 }
