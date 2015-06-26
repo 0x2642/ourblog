@@ -1,30 +1,31 @@
-      <div class="col-xs-12 col-md-4">
-        <section class="about">
-          <p><strong>0x2642 Blog</strong> is a blog about 教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班</p>
-          <a class="btn btn-default" role="button" href="/about">更多</a>
-          <div class="clearfix visible-nm"></div>
-        </section>
-        <section class="social">
-          <div class="row">
-            <div class="col-xs-3"><a href="#weixin" class="social-icon social-weixin">微信</a></div>
-            <div class="col-xs-3"><a href="#weibo" class="social-icon social-weibo">微博</a></div>
-            <div class="col-xs-3"><a href="#qq" class="social-icon social-qq">QQ</a></div>
-            <div class="col-xs-3"><a href="#rss" class="social-icon social-rss">RSS</a></div>
-          </div>
-        </section>
-        <section class="ctrl">
-        <% if (user) { %>
-            <img src="https://avatars3.githubusercontent.com/u/5365783?v=3&s=460" class="avatar img-circle">
-            <p>Welcome back, <em><%= user.nickName %></em></p>
-          <div class="ctrl-bar">
-            <button class="btn btn-primary btn-block" id="post"><span class="glyphicon glyphicon-edit"></span>发表新文章</button>
-            <button class="btn btn-default btn-block" id="signature">编辑签名</button>
-            <button class="btn btn-danger btn-block" id="logout"><span class="glyphicon glyphicon-log-out"></span>登出</button>
-          </div>
-        <% }else{ %>
-          <div class="ctrl-bar">
-            <a class="btn btn-default btn-block" role="button" href="/login"><span class="glyphicon glyphicon-log-in"></span>登陆</a>
-          </div>
-        <% } %>
-        </section>
+<div class="col-xs-12 col-md-4">
+  <section class="about">
+    <p><strong>0x2642 Blog</strong> is a blog about 教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班</p>
+    <a class="btn btn-default" role="button" href="/about">更多</a>
+    <div class="clearfix visible-nm"></div>
+  </section>
+  <section class="social">
+    <div class="row">
+      <div class="col-xs-3"><a href="#weixin" class="social-icon social-weixin">微信</a></div>
+      <div class="col-xs-3"><a href="#weibo" class="social-icon social-weibo">微博</a></div>
+      <div class="col-xs-3"><a href="#qq" class="social-icon social-qq">QQ</a></div>
+      <div class="col-xs-3"><a href="#rss" class="social-icon social-rss">RSS</a></div>
+    </div>
+  </section>
+  <section class="ctrl">
+    <% if (user) { %>
+    <img src="https://avatars3.githubusercontent.com/u/5365783?v=3&s=460" class="avatar img-circle">
+    <p>Welcome back, <em><%= user.nickName %></em></p>
+    <div class="ctrl-bar">
+      <button class="btn btn-primary btn-block" id="post"><span class="glyphicon glyphicon-edit"></span>发表新文章</button>
+      <button class="btn btn-default btn-block" id="signature">编辑签名</button>
+      <button class="btn btn-danger btn-block" id="logout"><span class="glyphicon glyphicon-log-out"></span>登出</button>
+    </div>
+    <% }else{ %>
+    <div class="ctrl-bar">
+      <a class="btn btn-default btn-block" role="button" href="/login"><span class="glyphicon glyphicon-log-in"></span>登陆</a>
+      <a class="btn btn-default btn-block" role="button" href="/reg"><span class="glyphicon glyphicon-log-in"></span>注册</a>
+    </div>
+    <% } %>
+  </section>
 </div>

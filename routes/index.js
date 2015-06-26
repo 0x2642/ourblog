@@ -16,8 +16,7 @@ var glEmail = null;
 module.exports = function(app) {
     /* GET home page. */
     app.get('/', function(req, res) {
-        console.log(req.session.user);
-        Post.getOne(null, function(err, posts) {
+        Post.getAllPosts(function(err, posts) {
             if (err) {
                 posts = [];
             }
@@ -26,7 +25,7 @@ module.exports = function(app) {
                 user: req.session.user,
                 posts: posts
             });
-        })
+        });
     });
 
     app.get('/songjson', function(req, res) {
@@ -155,7 +154,8 @@ module.exports = function(app) {
                             if (err) {
                                 console.log(err);
                                 // 如果发送失败，返回发送页面
-                                res.redirect('/login');
+                                glEmail = email;
+                                res.redirect('/loginpwd');
                             } else {
                                 console.log("Send mail success");
                                 glEmail = email;
@@ -258,6 +258,27 @@ module.exports = function(app) {
             }
         });
     });
+
+    // 未完工
+    // app.get('/u/:email', function(req, res) {
+    //     User.getUser(req.params.email, function(err, user) {
+    //         if (err) {
+    //             console.log('can\'t find the user');
+    //             return res.redirect('/');
+    //         }
+    //         Post.getAllPost(req.params.email, function(err, posts) {
+    //             if (err) {
+    //                 console.log('Fetch posts error');
+    //                 return res.redirect('/');
+    //             }
+    //             res.render('user', {
+    //                 poster: user.nickName,
+    //                 post: posts,
+    //                 user: req.session.user
+    //             })
+    //         })
+    //     })
+    // });
 
     function checkLogin(req, res, next) {
         console.log('checkLogin');

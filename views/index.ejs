@@ -12,63 +12,21 @@
         <div class="col-xs-12 col-md-8">
           <h2>Latest</h2>
           <div class="row">
-            <div class="col-xs-12 col-md-6">
-              <article id="article-1">
-                <img src="images/bg.jpg" width="360" height="180">
-                <div class="desc">
-                  <a href="#"><h2>教主加班不舍昼夜</h2></a>
-                  <author><span class="glyphicon glyphicon-pencil"></span>XYKbear</author>
-                  <p>【男子买加班单模仿广告砸核桃...结果加班单碎了】今天，上海李先生在一家导航软件公司，购买了一沓价值6288元的加班单。</p>
-                  <ul class="tags">
-                    <li id="tag-30">PHP</li>
-                  </ul>
-                </div>
-              </article>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <article id="article-1">
-                <img src="images/bg.jpg" width="360" height="180">
-                <div class="desc">
-                  <a href="#"><h2>夕张我老婆</h2></a>
-                  <author><span class="glyphicon glyphicon-pencil"></span>XYKbear</author>
-                  <p>一男子因夕张数值低而看不起，遭群主暴打身亡</p>
-                  <ul class="tags">
-                    <li id="tag-1">ACG</li>
-                    <li id="tag-9">Kancolle</li>
-                  </ul>
-                </div>
-              </article>
-            </div>
-            <div class="clearfix visible-nm"></div>
-
-            <div class="col-xs-12 col-md-6">
-              <article id="article-1">
-                <img src="images/bg.jpg" width="360" height="180">
-                <div class="desc">
-                  <a href="#"><h2>二次再得失语症</h2></a>
-                  <author><span class="glyphicon glyphicon-pencil"></span>XYKbear</author>
-                  <p>二次又不会说话只会发表情了，怀疑又在JK家忙活</p>
-                  <ul class="tags">
-                    <li id="tag-1">ACG</li>
-                    <li id="tag-9">Kancolle</li>
-                  </ul>
-                </div>
-              </article>
-            </div>
-            <div class="col-xs-12 col-md-6">
-              <article id="article-1">
-                <img src="images/bg.jpg" width="360" height="180">
-                <div class="desc">
-                  <a href="#"><h2>XXX</h2></a>
-                  <author><span class="glyphicon glyphicon-pencil"></span>XYKbear</author>
-                  <p>个嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎嘎灌灌灌灌灌</p>
-                  <ul class="tags">
-                    <li id="tag-1">ACG</li>
-                    <li id="tag-9">Kancolle</li>
-                  </ul>
-                </div>
-              </article>
-            </div>
+            <% posts.forEach(function(post, index){ %>
+              <div class="col-xs-12 col-md-6">
+                <article id="article-1">
+                  <img src="images/bg.jpg" width="360" height="180">
+                  <div class="desc">
+                    <a href="#"><h2><%= post.title %></h2></a>
+                    <author><span class="glyphicon glyphicon-pencil"></span><%= post.poster %></author>
+                    <p><%= post.contents %></p>
+                    <ul class="tags">
+                      <li id="tag-30">PHP</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            <% }) %>
             <div class="clearfix visible-nm"></div>
           </div>
         </div>

@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var settings = require('../settings');
 
 var postSchame = new mongoose.Schema({
 	// id: Number,
@@ -39,7 +38,9 @@ Post.prototype.save = function(callback) {
 	})
 }
 
-Post.getOne = function(poster, callback) {
+Post.get = function(poster, callback) {
+	//var postsModify = new Array();
+
 	poster = "515310301@qq.com";
 	postModel.find({
 		poster: poster
@@ -51,5 +52,14 @@ Post.getOne = function(poster, callback) {
 	})
 }
 
+Post.getAllPosts = function(callback) {
+	postModel.find({}, function(err, posts){
+		if (err) {
+			console.log('mongoose get posts error');
+			return err.stack;
+		}
+		callback(null, posts);
+	});
+}
 
 module.exports = Post;
