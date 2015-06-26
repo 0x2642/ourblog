@@ -238,8 +238,8 @@ module.exports = function(app) {
     // app.post('/post', checkLogin);
     app.post('/post', function(req, res) {
         var currentUser = req.session.user;
-        var postTitle = req.body.title;
-        var postContext = req.body.context;
+        var postTitle = req.mce_1;
+        var postContext = req.mce_2;
 
         if (!currentUser) {
             emailStr = '515310301@qq.com';

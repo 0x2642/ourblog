@@ -1,11 +1,50 @@
 <%- include header %>
-<div style="margin-top: 80px; margin-left: 50px">
-	<form method="post">
-		标题: </br>
-		<input name="title" type="text" /></br>
-		内容: </br>
-		<textarea name="context" cols="100" rows="30"></textarea> </br>
-		<input type="submit" value="提交" />
-	</form>
-</div>
+<script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: "p.editable",
+    inline: true,
+    toolbar: "undo redo",
+    menubar: false
+});
+tinymce.init({
+    selector: "h1.editable",
+    inline: true,
+    toolbar: "undo redo",
+    menubar: false
+});
+tinymce.init({
+    selector: "article.editable",
+    inline: true,
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste"
+    ],
+    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+});
+</script>
+<form method="post">
+  <div class="banner">
+    <img class="banner-img" src="images/bg.jpg">
+    <div class="banner-text">
+      <div class="container">
+        <h1 class="editable">Post Title</h1>
+        <author><span class="glyphicon glyphicon-pencil"></span>XYKbear</author>
+        
+      </div>
+    </div>
+    <p class="editable">封面图片</p>
+  </div>
+
+  <div class="container">
+    <div class="row post">
+      <div class="col-xs-12 col-md-8">
+        <article class="editable"></article>
+        <button type="submit" class="btn btn-success" >发布文章</button>
+      </div>
+    </div>
+  </div>
+</form>
+
 <%- include footer %>

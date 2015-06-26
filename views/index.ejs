@@ -1,9 +1,12 @@
 <%- include header %>
 
-    <div class="bg" style="background-image:url('images/bg.jpg');background-position:-500px -250px;">
-      <div class="container">
+    <div class="banner">
+      <img class="banner-img" src="images/bg.jpg">
+      <div class="banner-text">
+        <div class="container">
           <h1>欢迎来到加班的世界</h1>
           <p>请到教主处领取加班单</p>
+        </div>
       </div>
     </div>
 
@@ -11,7 +14,7 @@
       <div class="row">
         <div class="col-xs-12 col-md-8">
           <h2>Latest</h2>
-          <div class="row">
+          <div class="row list">
             <% posts.forEach(function(post, index){ %>
               <div class="col-xs-12 col-md-6">
                 <article id="article-1">
