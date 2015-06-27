@@ -17,6 +17,9 @@
     "mongoose": "*",
     "express-session": "*",
     "nodemailer": "*",
-    "nodemailer-smtp-transport": "*"
+    "nodemailer-smtp-transport": "*",
+    "mocha": "~2.2.5",
+    "superagent": "~1.2.0",
+    "expect.js": "~0.3.1"
   }
 }
