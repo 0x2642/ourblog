@@ -8,6 +8,7 @@ var smtpTransport = require('nodemailer-smtp-transport');
 var Promise = require('promise');
 var validator = require('validator');
 var eventproxy = require('eventproxy');
+var mail = require('../modules/mail');
 
 function _generatePassword() {
 	var password = Math.round(Math.random() * 8999) + 1000;
@@ -24,30 +25,12 @@ function _getEmail() {
 
 // 发送给用户密码邮件
 function _sendMail(email) {
-	// 使用Promise解决发送邮件后跳转不能的错误
-	var promise = new Promise(function(resolve, reject) {
-		var transport = nodemailer.createTransport(smtpTransport(config.mail_opt));
-
-		transport.sendMail({
-			from: config.mail_info.from,
-			to: email,
-			subject: config.mail_info.subject,
-			text: config.mail_info.text + _getPassword()
-		}, function(err, info) {
-			if (err) {
-				console.log(err);
-				// 如果发送失败，返回发送页面
-				global_email = email;
-				reject();
-			} else {
-				console.log("Send mail success");
-				global_email = email;
-				resolve();
-			}
-		});
-	});
-
-	return promise
+	var data=new Array();
+	data['password']=_getPassword();
+	var tpl='login_mail';
+	var ret = mail.sendMail(email,data,tpl);
+	global_email=ret['global_email'];
+	return ret['promise'];
 }
 
 exports.showLogin = function(req, res) {
@@ -134,7 +117,7 @@ exports.passwordVerify = function(req, res) {
 	}
 }
 
-exports.logout = function(req, res) {
+exports.logout = function(req, res) {	
 	req.session.user = null;
 	res.redirect('/');
 }
