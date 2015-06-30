@@ -20,6 +20,9 @@
     "nodemailer-smtp-transport": "*",
     "mocha": "~2.2.5",
     "superagent": "~1.2.0",
-    "expect.js": "~0.3.1"
+    "expect.js": "~0.3.1",
+    "promise": "~7.0.3",
+    "validator": "~3.40.1",
+    "eventproxy": "~0.3.4"
   }
 }

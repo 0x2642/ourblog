@@ -25,7 +25,16 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
-app.use(session(config.session));
+
+app.use(session({
+    secret: config.session_secret,
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 2592000000
+    }
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '..')));
 

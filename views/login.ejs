@@ -1,4 +1,9 @@
 <%- include header %>
+<% if (typeof(error_msg) !== 'undefined' && error_msg) { %>
+	<div style="margin-top: 300px; margin-left: 100px;"> 
+		<p>Fark u, there's some error : <em><%= error_msg %></em></p>
+	</div> 
+<% } %>
 <div class="login">
 	<form method="post" onsubmit="waitingDialog.show('Sending e-mail...', {dialogSize: 'sm', progressType: 'warning'});">
 		<label for="exampleInputEmail3">请输入邮箱地址：</label>

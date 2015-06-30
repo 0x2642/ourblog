@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
-var mongoURL = require('../settings').mongodbUrl;
+var mongoURL = require('../config').dbUrl;
+
+console.log('mongoURL' + mongoURL);
 // 程序启动后通过mongoose进行连接db的操作
 mongoose.connect(mongoURL);
 // 连接db成功时
