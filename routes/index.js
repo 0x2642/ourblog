@@ -5,12 +5,14 @@ var User = require('../models/user');
 var Post = require('../models/post');
 var login = require('../controllers/loginController');
 var registor = require('../controllers/registorController');
+var common = require('../modules/common');
 // Test Code
 // var defaultUrl = 'https://m.tianyi9.com/fo.php?live_id=KKXKPYZFOUCCQHOY&file_id=a1641fdf23a085a9&logincookie=';
 
 module.exports = function(app) {
     /* GET home page. */
     app.get('/', function(req, res) {
+        
         Post.getAllPosts(function(err, posts) {
             if (err) {
                 posts = [];
@@ -98,6 +100,9 @@ module.exports = function(app) {
 
     // app.get('/post', checkLogin);
     app.get('/post', function(req, res) {
+        if (!req.session.user) {
+            res.redirect('/');
+        } 
         res.render('post', {
             title: "post title",
             user: req.session.user
@@ -107,11 +112,11 @@ module.exports = function(app) {
     // app.post('/post', checkLogin);
     app.post('/post', function(req, res) {
         var currentUser = req.session.user;
-        var postTitle = req.mce_1;
-        var postContext = req.mce_2;
+        var postTitle = req.body.mce_1;
+        var postContext = req.body.mce_2;
 
         if (!currentUser) {
-            emailStr = '515310301@qq.com';
+            res.redirect('/');
         } else {
             emailStr = currentUser.email;
         }

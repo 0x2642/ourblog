@@ -1,3 +1,4 @@
+var common = require('../modules/common');
 var mongoose = require('mongoose');
 
 var postSchame = new mongoose.Schema({
@@ -29,7 +30,9 @@ Post.prototype.save = function(callback) {
 		contents: this.contents,
 		createTime: date.getTime()
 	}
+
 	var newPost = new postModel(post);
+	common.pt('init finish postModel');
 	newPost.save(function(err, post) {
 		if (err) {
 			return err.stack;

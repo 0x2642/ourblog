@@ -119,5 +119,5 @@ exports.passwordVerify = function(req, res) {
 
 exports.logout = function(req, res) {	
 	req.session.user = null;
-	res.redirect('/');
+	// res.redirect('/');
 }
