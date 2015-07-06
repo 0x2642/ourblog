@@ -25,11 +25,10 @@ function _getEmail() {
 
 // 发送给用户密码邮件
 function _sendMail(email) {
-	var data=new Array();
-	data['password']=_getPassword();
-	var tpl='login_mail';
-	var ret = mail.sendMail(email,data,tpl);
-	global_email=ret['global_email'];
+	var data = new Array();
+	data['password'] = _getPassword();
+	var tpl = 'login_mail';
+	var ret = mail.sendMail(email, data, tpl);
 	return ret['promise'];
 }
 
@@ -72,8 +71,9 @@ exports.loginGetPassword = function(req, res) {
 			} else {
 				// 如果用户存在
 				if (user !== null) {
-					_sendMail(email).then(function() {
+					_sendMail(email).then(function(mail) {
 						// 发送成功后的动作
+						global_email = mail;
 						res.redirect('/loginpwd');
 					}).catch(function() {
 						// 发送失败后的动作
@@ -117,7 +117,7 @@ exports.passwordVerify = function(req, res) {
 	}
 }
 
-exports.logout = function(req, res) {	
+exports.logout = function(req, res) {
 	req.session.user = null;
 	// res.redirect('/');
 }

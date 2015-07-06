@@ -12,8 +12,13 @@ var common = require('../modules/common');
 module.exports = function(app) {
     /* GET home page. */
     app.get('/', function(req, res) {
-        
-        Post.getAllPosts(function(err, posts) {
+
+        // 可以自定义文章查询显示个数
+        var opt = {
+            limit: 5
+        };
+
+        Post.getPostsByQuery(null, opt, function(err, posts) {
             if (err) {
                 posts = [];
             }
@@ -102,7 +107,7 @@ module.exports = function(app) {
     app.get('/post', function(req, res) {
         if (!req.session.user) {
             res.redirect('/');
-        } 
+        }
         res.render('post', {
             title: "post title",
             user: req.session.user
