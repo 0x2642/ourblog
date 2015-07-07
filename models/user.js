@@ -1,62 +1,44 @@
+/*
+ * User model, 是否考虑加入base model需要验证
+ */
 var mongoose = require('mongoose');
+// var BaseModel = require('./base_model');
+var Schema = mongoose.Schema;
 
-// Define user schema
-var userSchema = new mongoose.Schema({
-	id: Number,
-	email: String,
-	nickName: String,
-	about: String,
-	signature: String,
-	lastLoginTime: Date
+// 定义用户数据模型原型
+var UserSchema = new Schema({
+	email: {
+		type: String // 用户邮箱
+	},
+	nickName: {
+		type: String // 用户昵称
+	},
+	about: {
+		type: String // 用户简介
+	},
+	signature: {
+		type: String // 用户签名
+	},
+	lastLoginTime: {
+		type: String, 
+		default: Date.now
+	}
+	// create_at: {
+	// 	type: Date,  // 用户创建时间
+	// 	default: Date.now
+	// },
+	// update_at: {
+	// 	type: Date,  // 用户更新时间
+	// 	default: Date.now
+	// },
+	// avatar_url: {
+	// 	type: String  // 用户头像外链地址
+	// }
 }, {
 	collection: 'users'
 });
 
-// Create Schema Model
-var userModel = mongoose.model('User', userSchema);
+// 引入basemodel
+// UserSchema.plugin(BaseModel);
 
-// Create User class
-function User(user) {
-	this.id = user.id;
-	this.email = user.email;
-	this.nickName = user.nickName;
-	this.about = user.about;
-	this.signature = user.signature;
-	this.lastLoginTime = user.lastLoginTime;
-}
-
-module.exports = User;
-
-// Get user from db by email
-User.getUser = function(email, callback) {
-	userModel.findOne({
-		email: email
-	}, function(err, user) {
-		if (err) {
-			return callback(err);
-		}
-		callback(null, user);
-	})
-}
-
-// Save user information
-User.prototype.save = function(callback) {
-	// user information
-	var user = {
-		id: this.id,
-		email: this.email,
-		nickName: this.nickName,
-		about: this.about,
-		signature: this.signature,
-		lastLoginTime: this.lastLoginTime,
-	};
-
-	var newUser = new userModel(user);
-
-	newUser.save(function(err, user) {
-		if (err) {
-			return callback(err);
-		}
-		callback(null, user);
-	});
-};
+mongoose.model('User', UserSchema);

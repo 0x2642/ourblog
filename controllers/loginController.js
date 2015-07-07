@@ -2,7 +2,7 @@ var global_password;
 var global_email;
 
 var config = require('../config');
-var User = require('../models/user');
+var User = require('../dao/indexDAO').User;
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 var Promise = require('promise');
@@ -65,7 +65,7 @@ exports.loginGetPassword = function(req, res) {
 		// 产生密码
 		_generatePassword();
 		// 进入DB查找用户是否存在
-		User.getUser(email, function(err, user) {
+		User.getUserByEmail(email, function(err, user) {
 			if (err) {
 				ep.emit('login_fail', '取不到User数据');
 			} else {
@@ -100,17 +100,8 @@ exports.passwordVerify = function(req, res) {
 
 	if (inputpwd === password) {
 		console.log('Login successful');
-		User.getUser(email, function(err, user) {
-			if (err) {
-				// 返回一个没有登录的index
-				res.redirect('/');
-				return err;
-			}
-			console.log('user nickname is: ', user.nickName);
-			req.session.user = user;
-			// 返回一个登录了的index
-			res.redirect('/');
-		})
+		req.session.user = user; 
+		res.redirect('/');
 	} else {
 		console.log('password error');
 		res.redirect('/loginpwd');
