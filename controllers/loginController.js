@@ -1,11 +1,7 @@
 var global_password;
 var global_email;
 
-var config = require('../config');
 var User = require('../dao/indexDAO').User;
-var nodemailer = require('nodemailer');
-var smtpTransport = require('nodemailer-smtp-transport');
-var Promise = require('promise');
 var validator = require('validator');
 var eventproxy = require('eventproxy');
 var mail = require('../modules/mail');
@@ -96,12 +92,16 @@ exports.passwordVerify = function(req, res) {
 	var password = _getPassword();
 	var email = _getEmail();
 
-	console.log('email: ' + email);
-
 	if (inputpwd === password) {
-		console.log('Login successful');
-		req.session.user = user; 
-		res.redirect('/');
+		console.log('====== Verify Success =====');
+		User.getUserByEmail(email, function(err, user){
+			if (err) {
+				console.error('db get error');
+				return res.redirect('/');
+			}
+			req.session.user = user;
+			res.redirect('/');
+		})
 	} else {
 		console.log('password error');
 		res.redirect('/loginpwd');
