@@ -40,3 +40,45 @@ exports.saveNewPost = function(poster, title, contents, createTime, callback) {
 
 	postModel.save(callback);
 }
+
+/**
+ * 根据用户Email获取用户所有文章列表
+ * Callback:
+ * - err, 数据库错误
+ * - posts, 文章列表
+ * @param {String} query 搜索关键词
+ * @param {Object} option 搜索选项
+ * @param {Function} callback 回调函数
+ */
+exports.getPostsByEmail = function(email, callback) {
+	// 异常Case考虑：如果不存在email, 则返回空
+	if (!email) {
+		callback(null, null);
+	} else {
+		PostModel.find({poster: email}, function(err, posts) {
+			if (err) {
+				return callback(err);
+			}
+			if (!posts) {
+				return callback(err, null);
+			}
+			callback(null, posts);
+		});
+	}
+}
+
+exports.getSinglePostById = function(id, callback) {
+	if (!id) {
+		callback(null, null);
+	} else {
+		PostModel.findOne({
+			_id: id
+		}, function(err, post) {
+			if (err) {
+				callback(err);
+			} else {
+				callback(null, post);
+			}
+		})
+	}
+}

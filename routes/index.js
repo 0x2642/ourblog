@@ -36,33 +36,15 @@ module.exports = function(app) {
     app.post('/reg', checkNotLogin);
     app.post('/reg', registor.registInner);
 
-
     // app.get('/post', checkLogin);
     app.get('/post', post.showPostView);
 
     // app.post('/post', checkLogin);
     app.post('/post', post.postAnArticle);
 
-    // 未完工
-    // app.get('/u/:email', function(req, res) {
-    //     User.getUser(req.params.email, function(err, user) {
-    //         if (err) {
-    //             console.log('can\'t find the user');
-    //             return res.redirect('/');
-    //         }
-    //         Post.getAllPost(req.params.email, function(err, posts) {
-    //             if (err) {
-    //                 console.log('Fetch posts error');
-    //                 return res.redirect('/');
-    //             }
-    //             res.render('user', {
-    //                 poster: user.nickName,
-    //                 post: posts,
-    //                 user: req.session.user
-    //             })
-    //         })
-    //     })
-    // });
+    app.get('/u/:email', post.showUserAllPost);  // 显示单个用户的所有文章
+
+    app.get('/p/:_id', post.showSinglePost);  // 显示一篇文章
 
     function checkLogin(req, res, next) {
         console.log('checkLogin');

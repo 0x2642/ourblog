@@ -1,0 +1,12 @@
+<%- include header %>
+<div style="margin-top: 100px; margin-left:50px">
+	<p>
+		<h2><%= post.title %></h2>
+		作者：<a href="/u/<%= post.poster %>"><%= post.poster %></a> | 
+  		日期：<%= post.createTime %> <br />
+	</p>
+	<p>
+		<%= post.contents %>
+	</p>
+</div>
+<%- include footer %>

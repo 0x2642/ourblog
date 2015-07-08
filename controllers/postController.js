@@ -1,4 +1,5 @@
 var Post = require('../dao/indexDAO').Post;
+var User = require('../dao/indexDAO').User;
 
 exports.showIndexview = function(req, res) {
 	// 可以自定义文章查询显示个数
@@ -26,6 +27,42 @@ exports.showPostView = function(req, res) {
 		title: "post title",
 		user: req.session.user
 	});
+}
+
+exports.showUserAllPost = function(req, res) {
+	var email = req.params.email;
+	
+	User.getUserByEmail(email, function(err, user) {
+		if (!user) {
+			console.log('User is not found');
+			return res.redirect('/');
+		}
+		Post.getPostsByEmail(email, function(err, posts) {
+			if (err) {
+				console.log(err.stack);
+				res.redirct('/');
+			} else {
+				res.render('user', {
+					title: 'user', 
+					user: req.session.user,
+					posts: posts
+				});
+			}
+		});
+	});
+}
+
+exports.showSinglePost = function(req, res) {
+	Post.getSinglePostById(req.params._id, function(err, post){
+		if (err) {
+			return res.redirect('/');
+		}
+		res.render('article', {
+			title: post.title,
+			post: post,
+			user: req.session.user
+		})
+	})
 }
 
 exports.postAnArticle = function(req, res) {
