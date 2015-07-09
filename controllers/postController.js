@@ -1,5 +1,7 @@
 var Post = require('../dao/indexDAO').Post;
 var User = require('../dao/indexDAO').User;
+var validator = require('validator');
+var striptags = require('striptags');
 
 exports.showIndexview = function(req, res) {
 	// 可以自定义文章查询显示个数
@@ -31,7 +33,7 @@ exports.showPostView = function(req, res) {
 
 exports.showUserAllPost = function(req, res) {
 	var email = req.params.email;
-	
+
 	User.getUserByEmail(email, function(err, user) {
 		if (!user) {
 			console.log('User is not found');
@@ -43,7 +45,7 @@ exports.showUserAllPost = function(req, res) {
 				res.redirct('/');
 			} else {
 				res.render('user', {
-					title: 'user', 
+					title: 'user',
 					user: req.session.user,
 					posts: posts
 				});
@@ -53,7 +55,7 @@ exports.showUserAllPost = function(req, res) {
 }
 
 exports.showSinglePost = function(req, res) {
-	Post.getSinglePostById(req.params._id, function(err, post){
+	Post.getSinglePostById(req.params._id, function(err, post) {
 		if (err) {
 			return res.redirect('/');
 		}
@@ -67,8 +69,8 @@ exports.showSinglePost = function(req, res) {
 
 exports.postAnArticle = function(req, res) {
 	var currentUser = req.session.user;
-	var postTitle = req.body.mce_1;
-	var postContext = req.body.mce_2;
+	var postTitle = striptags(validator.trim(req.body.mce_1)); // 去除html tags
+	var postContext = striptags(validator.trim(req.body.mce_2)); // 去除 html tags
 
 	if (!currentUser) {
 		res.redirect('/');
@@ -77,7 +79,7 @@ exports.postAnArticle = function(req, res) {
 	}
 
 	var date = new Date();
-	
+
 	Post.saveNewPost(emailStr, postTitle, postContext, date.getTime(), function(err) {
 		if (err) {
 			console.error('=========== save post error ==============');
@@ -87,4 +89,36 @@ exports.postAnArticle = function(req, res) {
 			res.redirect('/');
 		}
 	})
+}
+
+exports.showEditPage = function(req, res) {
+	var objId = req.params._id;
+	Post.getSinglePostById(objId, function(err, post) {
+		if (err) {
+			console.log('========== Get Post Fail ==========');
+			console.log(err.stack);
+			res.redirect('/')
+		} else {
+			res.render('edit', {
+				title: '编辑模式',
+				user: req.session.user,
+				post: post
+			})
+		}
+	});
+}
+
+exports.updateAnAritcle = function(req, res) {
+	var objId = req.params._id;
+	var newContents = req.body.newContents;
+	var newTitle = req.body.newTitle;
+
+	Post.updatePostById(objId, newTitle, newContents, function(err){
+		if (err) {
+			console.log('修改失败 请重新修改');
+			res.redirect('/edit/' + req.params._id);
+		} else {
+			res.redirect('/p/' + req.params._id);
+		}
+	});
 }

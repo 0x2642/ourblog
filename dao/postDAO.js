@@ -45,9 +45,8 @@ exports.saveNewPost = function(poster, title, contents, createTime, callback) {
  * 根据用户Email获取用户所有文章列表
  * Callback:
  * - err, 数据库错误
- * - posts, 文章列表
- * @param {String} query 搜索关键词
- * @param {Object} option 搜索选项
+ * - posts, 该用户的所有文章列表
+ * @param {String} email email用户所有的文章
  * @param {Function} callback 回调函数
  */
 exports.getPostsByEmail = function(email, callback) {
@@ -55,7 +54,9 @@ exports.getPostsByEmail = function(email, callback) {
 	if (!email) {
 		callback(null, null);
 	} else {
-		PostModel.find({poster: email}, function(err, posts) {
+		PostModel.find({
+			poster: email
+		}, function(err, posts) {
 			if (err) {
 				return callback(err);
 			}
@@ -67,6 +68,14 @@ exports.getPostsByEmail = function(email, callback) {
 	}
 }
 
+/**
+ * 根据id来寻找一篇文章
+ * Callback:
+ * - err, 数据库错误
+ * - post, 匹配到的文章
+ * @param {String} id 文章的id
+ * @param {Function} callback 回调函数
+ */
 exports.getSinglePostById = function(id, callback) {
 	if (!id) {
 		callback(null, null);
@@ -81,4 +90,33 @@ exports.getSinglePostById = function(id, callback) {
 			}
 		})
 	}
+}
+
+/**
+ * 修改一篇文章
+ * Callback:
+ * - err, 数据库错误
+ * @param {String} newTitle 文章的新title
+ * @param {String} newContents 文章的新newContents
+ * @param {Function} callback 回调函数
+ */
+exports.updatePostById = function(id, newTitle, newContents, callback) {
+	PostModel.findOne({
+		_id: id
+	}, function(err, post) {
+		if (err) {
+			callback(err);
+		}
+
+		post.title = newTitle;
+		post.contents = newContents;
+
+		post.save(function(err) {
+			if (err) {
+				callback(err);
+			} else {
+				callback(null);
+			}
+		});
+	});
 }

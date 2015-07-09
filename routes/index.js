@@ -46,6 +46,9 @@ module.exports = function(app) {
 
     app.get('/p/:_id', post.showSinglePost);  // 显示一篇文章
 
+    app.get('/edit/:_id', post.showEditPage);  // 修改一篇文章
+    app.post('/edit/:_id', post.updateAnAritcle); 
+
     function checkLogin(req, res, next) {
         console.log('checkLogin');
         if (!req.session.user) {
