@@ -122,3 +122,17 @@ exports.updateAnAritcle = function(req, res) {
 		}
 	});
 }
+
+exports.removeSinglePost = function(req, res) {
+	var objId = req.params._id;
+
+	Post.removePostById(objId, function(err){
+		if (err) {
+			console.log('删除文章失败');
+			res.redirect('/p/' + req.params._id);
+		} else {
+			console.log('删除成功');
+			res.redirect('/');
+		}
+	})
+}

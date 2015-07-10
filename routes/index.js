@@ -7,8 +7,6 @@ var registor = require('../controllers/registorController');
 var post = require('../controllers/postController');
 
 var common = require('../modules/common');
-// Test Code
-// var defaultUrl = 'https://m.tianyi9.com/fo.php?live_id=KKXKPYZFOUCCQHOY&file_id=a1641fdf23a085a9&logincookie=';
 
 module.exports = function(app) {
     /* GET home page. */
@@ -48,6 +46,8 @@ module.exports = function(app) {
 
     app.get('/edit/:_id', post.showEditPage);  // 修改一篇文章
     app.post('/edit/:_id', post.updateAnAritcle); 
+
+    app.get('/remove/:_id', post.removeSinglePost); // 删除一篇文章
 
     function checkLogin(req, res, next) {
         console.log('checkLogin');

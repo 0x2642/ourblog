@@ -1,5 +1,11 @@
 var PostModel = require('../models/index').Post;
 
+// 共同方法，根据post的id查找对应的post
+function findThePost(post_id, callback) {
+	PostModel.findOne({
+		_id: post_id
+	}, callback);
+}
 /**
  * 根据关键词，获取文章列表
  * Callback:
@@ -77,19 +83,13 @@ exports.getPostsByEmail = function(email, callback) {
  * @param {Function} callback 回调函数
  */
 exports.getSinglePostById = function(id, callback) {
-	if (!id) {
-		callback(null, null);
-	} else {
-		PostModel.findOne({
-			_id: id
-		}, function(err, post) {
-			if (err) {
-				callback(err);
-			} else {
-				callback(null, post);
-			}
-		})
-	}
+	findThePost(id, function(err, post) {
+		if (err) {
+			callback(err);
+		} else {
+			callback(null, post);
+		}
+	});
 }
 
 /**
@@ -101,9 +101,7 @@ exports.getSinglePostById = function(id, callback) {
  * @param {Function} callback 回调函数
  */
 exports.updatePostById = function(id, newTitle, newContents, callback) {
-	PostModel.findOne({
-		_id: id
-	}, function(err, post) {
+	findThePost(id, function(err, post) {
 		if (err) {
 			callback(err);
 		}
@@ -119,4 +117,26 @@ exports.updatePostById = function(id, newTitle, newContents, callback) {
 			}
 		});
 	});
+}
+
+/**
+ * 删除一篇文章
+ * Callback:
+ * - err, 数据库错误
+ * @param {String} id 文章的序号
+ * @param {Function} callback 回调函数
+ */
+exports.removePostById = function(id, callback) {
+	findThePost(id, function(err, post) {
+		if (err) {
+			callback(err);
+		}
+		post.remove(function(err) {
+			if (err) {
+				callback(err);
+			} else {
+				callback(null);
+			}
+		});
+	})
 }
