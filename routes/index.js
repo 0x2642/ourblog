@@ -5,6 +5,7 @@ var fs = require('fs');
 var login = require('../controllers/loginController');
 var registor = require('../controllers/registorController');
 var post = require('../controllers/postController');
+var user = require('../controllers/userController');
 
 var common = require('../modules/common');
 
@@ -48,6 +49,9 @@ module.exports = function(app) {
     app.post('/edit/:_id', post.updateAnAritcle); 
 
     app.get('/remove/:_id', post.removeSinglePost); // 删除一篇文章
+
+    app.get('/upload', user.showPicUploadView);
+    app.post('/upload', user.uploadUserAvatar);
 
     function checkLogin(req, res, next) {
         console.log('checkLogin');

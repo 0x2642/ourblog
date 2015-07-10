@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var route = require('./routes/index');
 var config = require('./config');
+var multer = require('multer');
 
 var routes = require('./routes/index');
 
@@ -32,6 +33,13 @@ app.use(session({
     cookie: {
         maxAge: 2592000000
     }
+}));
+
+app.use(multer({
+  dest: './public/avatars',
+  rename: function (fieldname, filename) {
+    return filename;
+  }
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));

@@ -25,6 +25,7 @@
     "promise": "~7.0.3",
     "validator": "~3.40.1",
     "eventproxy": "~0.3.4",
-    "striptags": "*"
+    "striptags": "*",
+    "multer": "*"
   }
 }
