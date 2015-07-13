@@ -1,65 +1,29 @@
+/*
+ * Post model, 是否考虑加入base model需要验证
+ */
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var postSchame = new mongoose.Schema({
-	// id: Number,
-	poster: String,
-	title: String,
+
+var PostSchame = new Schema({
+	poster: {
+		type: String // 文章作者
+	},
+	title: {
+		type: String  // 文章标题
+	},
 	// visitCount: Number,
-	contents: String,
-	createTime: Date,
+	contents: {
+		type: String  // 
+	},
+	createTime: {
+		type: String,
+		default: Date.now
+	}
 	// status: Number,
 	// tags:Number
 }, {
 	collection: 'posts'
 });
 
-var postModel = mongoose.model('Post', postSchame);
-
-function Post(poster, title, contents) {
-	this.poster = poster;
-	this.title = title;
-	this.contents = contents;
-}
-
-Post.prototype.save = function(callback) {
-	var date = new Date();
-	var post = {
-		poster: this.poster,
-		title: this.title,
-		contents: this.contents,
-		createTime: date.getTime()
-	}
-	var newPost = new postModel(post);
-	newPost.save(function(err, post) {
-		if (err) {
-			return err.stack;
-		}
-		callback(null, post);
-	})
-}
-
-Post.get = function(poster, callback) {
-	//var postsModify = new Array();
-
-	poster = "515310301@qq.com";
-	postModel.find({
-		poster: poster
-	}, function(err, posts) {
-		if (err) {
-			return err.stack;
-		}
-		callback(null, posts);
-	})
-}
-
-Post.getAllPosts = function(callback) {
-	postModel.find({}, function(err, posts){
-		if (err) {
-			console.log('mongoose get posts error');
-			return err.stack;
-		}
-		callback(null, posts);
-	});
-}
-
-module.exports = Post;
+mongoose.model('Post', PostSchame);

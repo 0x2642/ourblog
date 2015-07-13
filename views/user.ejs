@@ -1,0 +1,10 @@
+<%- include header %>
+<div style="margin-top: 100px; margin-left:50px">
+	<% posts.forEach(function (post, index) { %>
+		<p>
+			<h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+			创建日期: <%= post.createTime %>
+		</p>
+	<% }) %>
+</div>
+<%- include footer %>

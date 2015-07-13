@@ -34,3 +34,8 @@ My group's blog. Thank you for enjoy.
 ### mail ###
 1. ourblog_test@163.com ourblog123
 2. iwnhqunluvahwzsf
+
+### Test Case ### 
+1. Write the test case in test folder
+2. npm start 
+3. mocha test 
