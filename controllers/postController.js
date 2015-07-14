@@ -3,7 +3,7 @@ var User = require('../dao/indexDAO').User;
 var validator = require('validator');
 var striptags = require('striptags');
 
-exports.showIndexview = function(req, res) {
+exports.showIndexView = function(req, res) {
 	// 可以自定义文章查询显示个数
 	var opt = {
 		limit: 5
