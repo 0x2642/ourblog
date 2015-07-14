@@ -1,8 +1,10 @@
 <div class="col-xs-12 col-md-4">
   <section class="about">
-    <p><strong>0x2642 Blog</strong> is a blog about 教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班教主爱加班</p>
-    <button class="btn btn-default" href="/about">更多</button>
+    <p><%=pageSider.aboutText%></p>
+    <% if (pageSider.aboutLink != "") { %>
+    <button class="btn btn-default" href="<%=pageSider.aboutLink%>">更多</button>
     <div class="clearfix visible-nm"></div>
+    <% } %>
   </section>
   <section class="social">
     <div class="row">
@@ -13,9 +15,9 @@
     </div>
   </section>
   <section class="ctrl">
-    <% if (user) { %>
+    <% if (pageSider.userInfo) { %>
     <img src="https://avatars3.githubusercontent.com/u/5365783?v=3&s=460" class="avatar img-circle">
-    <p>Welcome back, <em><%= user.nickName %></em></p>
+    <p>Welcome back, <em><%= pageSider.userInfo.nickName %></em></p>
     <div class="ctrl-bar">
       <button class="btn btn-primary btn-block" href="/post"><span class="glyphicon glyphicon-edit"></span>发表新文章</button>
       <button class="btn btn-default btn-block" id="signature">编辑签名</button>

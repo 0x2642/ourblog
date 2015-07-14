@@ -132,6 +132,10 @@ section,
   margin-bottom: 20px;
 }
 
+.list{
+  margin-top: 20px;
+}
+
 .list article img {
   width: 100%;
   height: 100%;
@@ -141,8 +145,12 @@ section,
   margin-top: 0;
 }
 
-.list article author {
+.list article author,
+.list article timestamp {
   color: #999;
+}
+.list article author{
+  margin-right: 16px;
 }
 
 .list article ul {

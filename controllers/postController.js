@@ -3,7 +3,7 @@ var User = require('../dao/indexDAO').User;
 var validator = require('validator');
 var striptags = require('striptags');
 
-exports.showIndexview = function(req, res) {
+exports.showIndexView = function(req, res) {
 	// 可以自定义文章查询显示个数
 	var opt = {
 		limit: 5
@@ -13,11 +13,32 @@ exports.showIndexview = function(req, res) {
 		if (err) {
 			posts = [];
 		}
-		res.render('index', {
-			title: 'Yes sir Popesama\'s ',
-			user: req.session.user,
-			posts: posts
-		});
+		var pageParam = new Object();
+		var pageHeader = new Object();
+		var pageFooter = new Object();
+		var pageSider = new Object();
+
+		pageHeader.title = "Home";
+		pageHeader.active = "Home";
+		pageHeader.extraStyles = new Array();
+
+		pageFooter.extraScripts = new Array();
+
+		//TODO: aboutText need a HTML converter
+		pageSider.aboutText = "<strong>0x2642 Blog</strong> is a blog about 教主爱加班教主爱加班";
+		pageSider.aboutLink = "/about";
+		pageSider.userInfo = req.session.user;
+		//TODO: Control panel btn
+
+		pageParam.pageTitle = "欢迎来到加班的世界";
+		pageParam.pageDesc = "请到教主处领取加班单";
+		pageParam.pageImage = "images/bg.jpg";
+		pageParam.posts = posts;
+		pageParam.pageHeader = pageHeader;
+		pageParam.pageSider = pageSider;
+		pageParam.pageFooter = pageFooter;
+
+		res.render('list', pageParam);
 	});
 }
 

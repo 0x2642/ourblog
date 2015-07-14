@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><%= title %> - 0x2642 Blog</title>
+    <title><%= pageHeader.title %> - 0x2642 Blog</title>
     <meta name="description" content="overworking blog">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
@@ -11,6 +11,9 @@
     <!-- CSS Setting -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <% pageHeader.extraStyles.forEach(function(extraStyle, index){ %>
+    <link rel="stylesheet" type="text/css" href="<%=extraStyle%>">
+    <% }) %>
   </head>
   <body>
     <!--[if lt IE 9]>
@@ -26,14 +29,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><span>0x</span>2642</a>
+          <a class="navbar-brand" href="/"><span>0x</span>2642</a>
           </div><!-- /.navbar-header -->
           <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Home</a></li>
-              <li><a href="/technology">Technology</a></li>
-              <li><a href="/acg">ACG</a></li>
-              <li><a href="/life">Life</a></li>
+              <li<%if(pageHeader.active=="Home"){%> class="active"<%}%>><a href="/">Home</a></li>
+              <li<%if(pageHeader.active=="Technology"){%> class="active"<%}%>><a href="/tag/technology">Technology</a></li>
+              <li<%if(pageHeader.active=="ACG"){%> class="active"<%}%>><a href="/tag/acg">ACG</a></li>
+              <li<%if(pageHeader.active=="Life"){%> class="active"<%}%>><a href="/tag/life">Life</a></li>
             </ul>
           </div><!--/.nav-collapse -->
       </div>

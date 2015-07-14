@@ -11,7 +11,7 @@ var common = require('../modules/common');
 
 module.exports = function(app) {
     /* GET home page. */
-    app.get('/', post.showIndexview);
+    app.get('/', post.showIndexView);
 
     app.get('/loginpwd', checkNotLogin);
     app.get('/loginpwd', login.showLoginPassword);
