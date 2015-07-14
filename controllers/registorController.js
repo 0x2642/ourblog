@@ -1,9 +1,15 @@
 var User = require('../dao/indexDAO').User;
 
 exports.showRegistor = function(req, res) {
+	temp = new Object();
+	temp.extraStyles = new Array();
+	temp.extraScripts = new Array();
+	temp.title = "Admin";
 	res.render('reg', {
 		title: "Registor test",
-		user: req.session.user
+		user: req.session.user,
+		pageHeader: temp,
+		pageFooter: temp
 	});
 }
 
