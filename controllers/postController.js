@@ -1,8 +1,10 @@
 var Post = require('../dao/indexDAO').Post;
 var User = require('../dao/indexDAO').User;
+var page = require('../modules/pageInit');
 var validator = require('validator');
 var striptags = require('striptags');
 
+// Index view display
 exports.showIndexView = function(req, res) {
 	// 可以自定义文章查询显示个数
 	var opt = {
@@ -13,32 +15,16 @@ exports.showIndexView = function(req, res) {
 		if (err) {
 			posts = [];
 		}
-		var pageParam = new Object();
-		var pageHeader = new Object();
-		var pageFooter = new Object();
-		var pageSider = new Object();
-
-		pageHeader.title = "Home";
-		pageHeader.active = "Home";
-		pageHeader.extraStyles = new Array();
-
-		pageFooter.extraScripts = new Array();
-
-		//TODO: aboutText need a HTML converter
-		pageSider.aboutText = "<strong>0x2642 Blog</strong> is a blog about 教主爱加班教主爱加班";
-		pageSider.aboutLink = "/about";
-		pageSider.userInfo = req.session.user;
-		//TODO: Control panel btn
-
-		pageParam.pageTitle = "欢迎来到加班的世界";
-		pageParam.pageDesc = "请到教主处领取加班单";
-		pageParam.pageImage = "images/bg.jpg";
-		pageParam.posts = posts;
-		pageParam.pageHeader = pageHeader;
-		pageParam.pageSider = pageSider;
-		pageParam.pageFooter = pageFooter;
-
-		res.render('list', pageParam);
+		page.setViewInit(); // Init page view
+		var params = page.getViewParams();
+		res.render('list', {
+			pageParam: params.pageParam,
+			pageHeader: params.pageHeader,
+			pageSider: params.pageSider,
+			pageFooter: params.pageFooter,
+			user: req.session.user,
+			posts: posts
+		});
 	});
 }
 
@@ -46,8 +32,11 @@ exports.showPostView = function(req, res) {
 	if (!req.session.user) {
 		res.redirect('/');
 	}
+	page.setViewInit(); // Init page view
+	var params = page.getViewParams();
 	res.render('post', {
-		title: "post title",
+		pageHeader: params.pageHeader,
+		pageFooter: params.pageFooter,
 		user: req.session.user
 	});
 }
@@ -134,7 +123,7 @@ exports.updateAnAritcle = function(req, res) {
 	var newContents = req.body.newContents;
 	var newTitle = req.body.newTitle;
 
-	Post.updatePostById(objId, newTitle, newContents, function(err){
+	Post.updatePostById(objId, newTitle, newContents, function(err) {
 		if (err) {
 			console.log('修改失败 请重新修改');
 			res.redirect('/edit/' + req.params._id);
@@ -147,7 +136,7 @@ exports.updateAnAritcle = function(req, res) {
 exports.removeSinglePost = function(req, res) {
 	var objId = req.params._id;
 
-	Post.removePostById(objId, function(err){
+	Post.removePostById(objId, function(err) {
 		if (err) {
 			console.log('删除文章失败');
 			res.redirect('/p/' + req.params._id);

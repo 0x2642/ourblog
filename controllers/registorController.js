@@ -1,15 +1,13 @@
 var User = require('../dao/indexDAO').User;
+var page = require('../modules/pageInit');
 
 exports.showRegistor = function(req, res) {
-	temp = new Object();
-	temp.extraStyles = new Array();
-	temp.extraScripts = new Array();
-	temp.title = "Admin";
+	page.setViewInit();
+	var params = page.getViewParams();
 	res.render('reg', {
-		title: "Registor test",
-		user: req.session.user,
-		pageHeader: temp,
-		pageFooter: temp
+		pageHeader: params.pageHeader,
+		pageFooter: params.pageFooter,
+		user: req.session.user
 	});
 }
 

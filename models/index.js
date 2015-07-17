@@ -10,18 +10,18 @@ mongoose.connect(mongoURL, function(err) {
 		process.exit(1);
 	}
 });
-// 连接db成功时
 
+// 连接db成功时
 mongoose.connection.on('connected', function() {
 	console.log('Mongoose connected to ' + mongoURL);
 });
-// 连接db出错时
 
+// 连接db出错时
 mongoose.connection.on('error', function(err) {
 	console.log('Mongoose connection error: ' + err);
 });
-// db失去连接 
 
+// db失去连接 
 mongoose.connection.on('disconnected', function() {
 	console.log('Mongoose disconnected');
 });

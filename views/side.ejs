@@ -15,9 +15,9 @@
     </div>
   </section>
   <section class="ctrl">
-    <% if (pageSider.userInfo) { %>
+    <% if (user) { %>
     <img src="https://avatars3.githubusercontent.com/u/5365783?v=3&s=460" class="avatar img-circle">
-    <p>Welcome back, <em><%= pageSider.userInfo.nickName %></em></p>
+    <p>Welcome back, <em><%= user.nickName %></em></p>
     <div class="ctrl-bar">
       <button class="btn btn-primary btn-block" href="/post"><span class="glyphicon glyphicon-edit"></span>发表新文章</button>
       <button class="btn btn-default btn-block" id="signature">编辑签名</button>

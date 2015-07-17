@@ -5,6 +5,7 @@ var User = require('../dao/indexDAO').User;
 var validator = require('validator');
 var eventproxy = require('eventproxy');
 var mail = require('../modules/mail');
+var page = require('../modules/pageInit');
 
 function _generatePassword() {
 	var password = Math.round(Math.random() * 8999) + 1000;
@@ -29,28 +30,45 @@ function _sendMail(email) {
 }
 
 exports.showLogin = function(req, res) {
+	page.setViewInit();
+	var params = page.getViewParams();
 	res.render('login', {
-		title: 'Login',
+		pageParam: params.pageParam,
+		pageHeader: params.pageHeader,
+		pageSider: params.pageSider,
+		pageFooter: params.pageFooter,
 		user: req.session.user,
 		error_msg: null
 	});
 }
 
 exports.showLoginPassword = function(req, res) {
+	page.setViewInit();
+	var params = page.getViewParams();
+
 	res.render('loginpwd', {
-		title: 'Login pwd',
+		pageParam: params.pageParam,
+		pageHeader: params.pageHeader,
+		pageSider: params.pageSider,
+		pageFooter: params.pageFooter,
 		user: req.session.user,
 	});
 }
 
 exports.loginGetPassword = function(req, res) {
 	var email = validator.trim(req.body.email).toLowerCase();
+	var params = page.getViewParams();
 	var ep = new eventproxy();
+
+	page.setViewInit();
 
 	ep.on('login_fail', function(msg) {
 		res.status(422);
 		res.render('login', {
-			title: 'Login',
+			pageParam: params.pageParam,
+			pageHeader: params.pageHeader,
+			pageSider: params.pageSider,
+			pageFooter: params.pageFooter,
 			user: req.session.user,
 			error_msg: msg
 		})
