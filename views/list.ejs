@@ -20,16 +20,21 @@
                 <img src="images/bg.jpg" width="360" height="180">
                 <div class="desc">
                   <a href="/p/<%= post._id %>"><h2><%= post.title %></h2></a>
-                  <author>
-                    <span class="glyphicon glyphicon-pencil"></span><%= post.poster %>
-                  </author>
-                  <timestamp>
-                    <span class="glyphicon glyphicon-time"></span><%= post.createTime %>
-                  </timestamp>
-                  <p><%= post.contents %></p>
-                  <ul class="tags">
-                    <li id="tag-30">PHP</li>
-                  </ul>
+                  <p>
+                    <author>
+                      <span class="glyphicon glyphicon-pencil"></span><%= post.poster %>
+                    </author>
+                    <timestamp>
+                      <span class="glyphicon glyphicon-time"></span><%= post.createTime %>
+                    </timestamp>
+                  </p>
+                  <p><%= post.contents.substring(0,100)+"..." %></p>
+                  <p class="tags">
+                    <a class="btn btn-xs tag-acg" href="/tag/acg">ACG</a>
+                    <a class="btn btn-xs tag-life" href="/tag/life">LIFE</a>
+                    <a class="btn btn-xs tag-php" href="/tag/php">PHP</a>
+                    <a class="btn btn-xs tag-js" href="/tag/js">JS</a>
+                  </p>
                 </div>
               </article>
             </div>
