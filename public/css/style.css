@@ -153,18 +153,29 @@ section,
   margin-right: 16px;
 }
 
-.list article ul {
-  height: 30px;
-  margin-bottom: 0;
+.list article .tags {
+  margin-top: 20px;
 }
 
-.list article li {
+.tags a {
+  min-width: 50px;
   float: right;
-  list-style: none;
-  padding: 4px 8px;
-  margin-left: 4px;
-  background-color: #6C6;
+  margin: 4px 4px 0 0;
+  border-radius: 0;
   color: #FFF;
+  background-color: #CCC;
+}
+.tags a:hover{
+  /*overwrite*/
+  color: #FFF;
+  opacity: 0.9;
+}
+
+.tags .tag-acg{
+  background: blueviolet;
+}
+.tags .tag-life{
+  background: darksalmon;
 }
 
 .about button {
