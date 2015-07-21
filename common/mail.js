@@ -1,6 +1,6 @@
 var config = require('../config');
 var config_mail = require(config['mail_conf']);
-var common = require('../modules/common');
+var util = require('../common/util');
 var User = require('../models/user');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');

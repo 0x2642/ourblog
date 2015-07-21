@@ -1,5 +1,5 @@
 var User = require('../dao/indexDAO').User;
-var page = require('../modules/pageInit');
+var page = require('../common/pageInit');
 
 exports.showRegistor = function(req, res) {
 	page.setViewInit();

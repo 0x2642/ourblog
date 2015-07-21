@@ -1,4 +1,4 @@
-var tool = require('../modules/tool');
+var tool = require('../common/tool');
 
 module.exports = function(schema) {
 	schema.method.create_at_ago = function() {

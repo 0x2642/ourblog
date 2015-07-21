@@ -7,7 +7,7 @@ var registor = require('../controllers/registorController');
 var post = require('../controllers/postController');
 var user = require('../controllers/userController');
 
-var common = require('../modules/common');
+var util = require('../common/util');
 
 module.exports = function(app) {
     /* GET home page. */

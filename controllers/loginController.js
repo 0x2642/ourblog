@@ -4,8 +4,8 @@ var global_email;
 var User = require('../dao/indexDAO').User;
 var validator = require('validator');
 var eventproxy = require('eventproxy');
-var mail = require('../modules/mail');
-var page = require('../modules/pageInit');
+var mail = require('../common/mail');
+var page = require('../common/pageInit');
 
 function _generatePassword() {
 	var password = Math.round(Math.random() * 8999) + 1000;

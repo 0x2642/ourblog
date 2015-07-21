@@ -1,6 +1,6 @@
 var Post = require('../dao/indexDAO').Post;
 var User = require('../dao/indexDAO').User;
-var page = require('../modules/pageInit');
+var page = require('../common/pageInit');
 var validator = require('validator');
 var striptags = require('striptags');
 
