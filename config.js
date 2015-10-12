@@ -4,7 +4,7 @@ var config = {
 
 
 	// 远程db地址
-	dbUrl: "mongodb://ourblog:111111@ds029307.mongolab.com:29307/ourblog",
+	dbUrl: "mongodb://test:test@ds048368.mongolab.com:48368/ourblog",
 
 	// 是否只允许
 	allow_sign_up: true, 

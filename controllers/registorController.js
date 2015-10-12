@@ -16,7 +16,7 @@ exports.registInner = function(req, res) {
 	var nickName = req.body.nickname;
 	var signiture = req.body.signiture;
 	var about = req.body.about;
-	var lastLogin = new Date().getTime();
+	var lastLoginTime = new Date().getTime();
 
 	//检查用户名是否已经存在 
 	User.getUserByEmail(email, function(err, user) {
